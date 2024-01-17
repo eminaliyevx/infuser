@@ -1,0 +1,76 @@
+<p-dialog
+  [(visible)]="showDialog"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  header="User details"
+  styleClass="p-fluid"
+  [style]="{ width: '500px' }"
+  (onHide)="onHide($event)"
+>
+  <ng-template pTemplate="content">
+    <div class="field">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        pInputText
+        id="name"
+        placeholder="Name"
+        required
+        [(ngModel)]="user.name"
+      />
+    </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        pInputText
+        id="email"
+        placeholder="Email"
+        required
+        [(ngModel)]="user.email"
+      />
+    </div>
+
+    <div class="field">
+      <label for="gender">Gender</label>
+      <p-dropdown
+        inputId="gender"
+        placeholder="Gender"
+        [options]="genders"
+        [(ngModel)]="user.gender"
+      ></p-dropdown>
+    </div>
+
+    <div class="field">
+      <label for="status">Status</label>
+      <p-dropdown
+        inputId="status"
+        placeholder="Status"
+        [options]="statuses"
+        [(ngModel)]="user.status"
+        appendTo="body"
+      ></p-dropdown>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      label="Cancel"
+      class="p-button-danger p-button-text"
+      (click)="onHide($event)"
+    ></button>
+
+    <button
+      pButton
+      label="Save"
+      class="p-button-success"
+      [loading]="loading"
+      (click)="saveUser()"
+    ></button>
+  </ng-template>
+</p-dialog>
+
+<p-toast></p-toast>

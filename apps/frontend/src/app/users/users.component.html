@@ -1,0 +1,150 @@
+<h1 class="text-center">Users</h1>
+
+<p-toolbar>
+  <ng-template pTemplate="left">
+    <button
+      pButton
+      label="New"
+      icon="pi pi-plus"
+      class="p-button-success"
+      (click)="openUserDialog()"
+    ></button>
+  </ng-template>
+</p-toolbar>
+
+<p-table
+  [value]="users"
+  [lazy]="true"
+  (onLazyLoad)="loadUsers($event)"
+  [paginator]="true"
+  [rows]="10"
+  [totalRecords]="totalRecords"
+  [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[5, 10, 20]"
+  sortMode="multiple"
+  [globalFilterFields]="['name', 'email', 'gender', 'status']"
+  [loading]="loading"
+  styleClass="p-datatable-striped"
+  [tableStyle]="{ 'min-width': '80rem' }"
+>
+  <ng-template pTemplate="caption">
+    <h4 class="m-0">Manage users</h4>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th>#</th>
+
+      <th pSortableColumn="name">
+        Name <p-sortIcon field="name"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="email">
+        Email <p-sortIcon field="email"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="gender">
+        Gender <p-sortIcon field="gender"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="status">
+        Status <p-sortIcon field="status"></p-sortIcon>
+      </th>
+
+      <th></th>
+    </tr>
+
+    <tr>
+      <th></th>
+
+      <th>
+        <p-columnFilter
+          type="text"
+          field="name"
+          matchMode="equals"
+          [showMenu]="false"
+          placeholder="Name"
+        ></p-columnFilter>
+      </th>
+
+      <th>
+        <p-columnFilter
+          type="text"
+          field="email"
+          matchMode="equals"
+          [showMenu]="false"
+          placeholder="Email"
+        ></p-columnFilter>
+      </th>
+
+      <th>
+        <p-columnFilter field="gender" matchMode="equals" [showMenu]="false">
+          <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+            <p-dropdown
+              [ngModel]="value"
+              [options]="genders"
+              (onChange)="filter($event.value)"
+              placeholder="Gender"
+            >
+            </p-dropdown> </ng-template
+        ></p-columnFilter>
+      </th>
+
+      <th>
+        <p-columnFilter field="status" matchMode="equals" [showMenu]="false">
+          <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+            <p-dropdown
+              [ngModel]="value"
+              [options]="statuses"
+              (onChange)="filter($event.value)"
+              placeholder="Status"
+            >
+            </p-dropdown> </ng-template
+        ></p-columnFilter>
+      </th>
+
+      <th></th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-user let-rowIndex="rowIndex">
+    <tr>
+      <td>{{ rowIndex + 1 }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.gender }}</td>
+      <td>{{ user.status }}</td>
+      <td>
+        <a
+          class="p-button p-button-rounded p-button-icon-only mr-2"
+          [routerLink]="'/user/' + user.id + '/posts'"
+        >
+          <span class="pi pi-eye"></span
+        ></a>
+
+        <button
+          pButton
+          icon="pi pi-pencil"
+          class="p-button-rounded p-button-warning mr-2"
+          (click)="editUser(user)"
+        ></button>
+
+        <button
+          pButton
+          icon="pi pi-trash"
+          class="p-button-rounded p-button-danger"
+          (click)="deleteUser(user)"
+        ></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<app-user
+  [showDialog]="showUserDialog"
+  [userId]="userId"
+  (onClose)="closeUserDialog()"
+  (onSubmit)="loadUsers($event)"
+></app-user>
+
+<p-confirmDialog [style]="{ width: '400px' }"></p-confirmDialog>

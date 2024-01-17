@@ -1,0 +1,25 @@
+{
+  "name": "infuser",
+  "version": "1.0.0",
+  "author": "Emin Aliyev",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "node apps/backend/dist/main"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.2",
+    "prettier-plugin-organize-imports": "^3.2.4",
+    "prisma": "^5.8.1",
+    "turbo": "^1.11.3",
+    "typescript": "^5.3.3"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "dependencies": {
+    "@prisma/client": "^5.8.1"
+  }
+}

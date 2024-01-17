@@ -1,0 +1,69 @@
+<p-dialog
+  [(visible)]="showDialog"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  header="Post details"
+  styleClass="p-fluid"
+  [style]="{ width: '500px' }"
+  (onHide)="onHide($event)"
+>
+  <ng-template pTemplate="content">
+    <div class="field">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        pInputText
+        id="title"
+        placeholder="Title"
+        required
+        [(ngModel)]="post.title"
+      />
+    </div>
+
+    <div class="field">
+      <label for="body">Body</label>
+      <textarea
+        pInputTextarea
+        id="body"
+        placeholder="Body"
+        rows="5"
+        cols="30"
+        [autoResize]="true"
+        required
+        [(ngModel)]="post.body"
+      ></textarea>
+    </div>
+
+    <div class="field" *ngIf="!userId && !postId">
+      <label for="selectedUser">User</label>
+      <p-dropdown
+        inputId="selectedUser"
+        placeholder="Select user"
+        optionLabel="name"
+        [required]="true"
+        [options]="users"
+        [(ngModel)]="selectedUser"
+      ></p-dropdown>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      label="Cancel"
+      class="p-button-danger p-button-text"
+      (click)="onHide($event)"
+    ></button>
+
+    <button
+      pButton
+      label="Save"
+      class="p-button-success"
+      [loading]="loading"
+      (click)="savePost()"
+    ></button>
+  </ng-template>
+</p-dialog>
+
+<p-toast></p-toast>
