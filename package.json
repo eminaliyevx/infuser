@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "start": "node apps/backend/dist/main"
+    "start": "node apps/backend/dist/main",
+    "generate": "prisma generate",
+    "migrate": "prisma migrate deploy"
   },
   "devDependencies": {
     "prettier": "^3.2.2",
