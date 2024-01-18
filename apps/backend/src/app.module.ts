@@ -1,4 +1,5 @@
 import { Module } from "@nestjs/common";
+import { ConfigModule } from "@nestjs/config";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from "path";
 import { PostModule } from "./post/post.module";
@@ -7,6 +8,7 @@ import { UserModule } from "./user/user.module";
 
 @Module({
   imports: [
+    ConfigModule,
     PrismaModule,
     UserModule,
     PostModule,
