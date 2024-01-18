@@ -84,6 +84,7 @@ export class PostComponent implements OnInit, OnChanges {
 
   onHide(_event: any) {
     this.post = {};
+    this.selectedUser = undefined;
     this.onClose.emit();
   }
 
