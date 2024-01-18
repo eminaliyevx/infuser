@@ -31,5 +31,5 @@ model Post {
   title  String @db.VarChar(256)
   body   String @db.Text
   userId Int
-  user   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
