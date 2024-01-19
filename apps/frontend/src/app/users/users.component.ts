@@ -9,6 +9,7 @@ import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { DropdownModule } from "primeng/dropdown";
 import { TableLazyLoadEvent, TableModule } from "primeng/table";
 import { ToolbarModule } from "primeng/toolbar";
+import { TooltipModule } from "primeng/tooltip";
 import { catchError, of, tap } from "rxjs";
 import { IUserFilter } from "../interfaces";
 import { TableService } from "../services/table.service";
@@ -27,6 +28,7 @@ import { UserService } from "./user.service";
     UserComponent,
     CommonModule,
     ConfirmDialogModule,
+    TooltipModule,
     RouterLink,
   ],
   templateUrl: "./users.component.html",

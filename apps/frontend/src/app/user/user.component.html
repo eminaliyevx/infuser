@@ -38,8 +38,10 @@
       <p-dropdown
         inputId="gender"
         placeholder="Gender"
+        [required]="true"
         [options]="genders"
         [(ngModel)]="user.gender"
+        appendTo="body"
       ></p-dropdown>
     </div>
 
@@ -48,6 +50,7 @@
       <p-dropdown
         inputId="status"
         placeholder="Status"
+        [required]="true"
         [options]="statuses"
         [(ngModel)]="user.status"
         appendTo="body"

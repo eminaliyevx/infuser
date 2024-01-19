@@ -30,6 +30,7 @@ export class PostService {
       orderBy: orderBy.length > 0 ? orderBy : [{ id: "desc" }],
       skip,
       take,
+      include: { user: true },
     });
 
     return {
@@ -65,6 +66,7 @@ export class PostService {
       orderBy: orderBy.length > 0 ? orderBy : [{ id: "desc" }],
       skip,
       take,
+      include: { user: true },
     });
 
     return {

@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import type { Post } from "@prisma/client";
-import { PaginatedData } from "shared";
+import { PaginatedData, PostWithUser } from "shared";
 import { IPostFilter } from "../interfaces/post-filter.interface";
 
 @Injectable({
@@ -12,12 +12,15 @@ export class PostService {
 
   getPosts(postFilter: IPostFilter, userId?: number) {
     if (userId) {
-      return this.http.get<PaginatedData<Post>>(`api/user/${userId}/posts`, {
-        params: { ...postFilter },
-      });
+      return this.http.get<PaginatedData<PostWithUser>>(
+        `api/user/${userId}/posts`,
+        {
+          params: { ...postFilter },
+        },
+      );
     }
 
-    return this.http.get<PaginatedData<Post>>(`api/post`, {
+    return this.http.get<PaginatedData<PostWithUser>>(`api/post`, {
       params: { ...postFilter },
     });
   }

@@ -85,6 +85,7 @@
               [options]="genders"
               (onChange)="filter($event.value)"
               placeholder="Gender"
+              appendTo="body"
             >
             </p-dropdown> </ng-template
         ></p-columnFilter>
@@ -98,6 +99,7 @@
               [options]="statuses"
               (onChange)="filter($event.value)"
               placeholder="Status"
+              appendTo="body"
             >
             </p-dropdown> </ng-template
         ></p-columnFilter>
@@ -117,9 +119,11 @@
       <td>
         <a
           class="p-button p-button-rounded p-button-icon-only mr-2"
+          pTooltip="Posts"
+          tooltipPosition="top"
           [routerLink]="'/user/' + user.id + '/posts'"
         >
-          <span class="pi pi-eye"></span
+          <span class="pi pi-comments"></span
         ></a>
 
         <button

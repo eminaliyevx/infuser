@@ -10,6 +10,7 @@ import { DropdownModule } from "primeng/dropdown";
 import { TableLazyLoadEvent, TableModule } from "primeng/table";
 import { ToolbarModule } from "primeng/toolbar";
 import { catchError, of, tap } from "rxjs";
+import type { PostWithUser } from "shared";
 import { IPostFilter } from "../interfaces/post-filter.interface";
 import { PostComponent } from "../post/post.component";
 import { TableService } from "../services/table.service";
@@ -34,7 +35,7 @@ import { PostService } from "./post.service";
   styleUrl: "./posts.component.css",
 })
 export class PostsComponent {
-  posts: Post[] = [];
+  posts: PostWithUser[] = [];
   totalRecords!: number;
   params!: IPostFilter;
   loading = false;

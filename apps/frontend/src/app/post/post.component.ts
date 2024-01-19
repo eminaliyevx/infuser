@@ -15,6 +15,7 @@ import { MessageService } from "primeng/api";
 import { ButtonModule } from "primeng/button";
 import { DialogModule } from "primeng/dialog";
 import { DropdownModule } from "primeng/dropdown";
+import { EditorModule } from "primeng/editor";
 import { InputTextModule } from "primeng/inputtext";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { ToastModule } from "primeng/toast";
@@ -34,6 +35,7 @@ import { UserService } from "../users/user.service";
     FormsModule,
     ToastModule,
     CommonModule,
+    EditorModule,
   ],
   templateUrl: "./post.component.html",
   styleUrl: "./post.component.css",
